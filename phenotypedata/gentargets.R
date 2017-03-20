@@ -1,0 +1,16 @@
+library(magrittr)
+library(plyr)
+library(dplyr)
+library(openxlsx)
+library(readr)
+library(stringr)
+library(purrr)
+library(functional)
+library(lubridate)
+library(R.utils)
+library(reshape2)
+
+patients <- read.xlsx("./dan_dementia_patients_20151201T161355.xlsx")
+easton <- filter(patients, Center == "Ringman") %>% select(Patient.ID:Genotypes)
+
+write.xlsx(easton, "easton.xlsx")
